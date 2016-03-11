@@ -1,8 +1,9 @@
 /***************************************************************************
-This document contains many different function defines from Super Mario 64.
+This document contains many different function defines from Super Mario 64
+for use in custom ASM code.
 
-You can import this file into a CajeASM file and call each function using 
-'JAL @functionName'.
+You can include this file into a CajeASM file and call each function using 
+'JAL @FunctionName'
 
 You can download the latest version of CajeASM here:
 http://origami64.net/showthread.php?tid=30
@@ -50,13 +51,62 @@ V0 = pointer to newly spawned object
 [SpawnObj]: 0x0029EDCC
 
 /*
+HideObject (0x8029F620 / 0x5A620)
+
+Hides current object (0x80361160) by ORing 0x01 at offset 0x02.
+*/
+[HideObject]: 0x0029F620
+
+/*
+UnHideObject (0x8029F6BC / 0x5A6BC)
+
+Unhides the current object (0x80361160) by ORing 0x10 at offset 0x02.
+*/
+[UnHideObject]: 0x0029F6BC
+
+/*
+SetObjBehavior (0x802A14C4 / 0x5C4C4)
+
+Set the behavior for an object.
+
+Arguments:
+A0 = Pointer to object
+A1 = Behavior segmented pointer
+*/
+[SetObjBehavior]: 0x002A14C4
+
+/*
+CheckObjBehavior (0x802A14FC / 0x5C4FC)
+
+Check to see if current object (0x80361160) has a certain behavior.
+
+Arguments:
+A0 = Behavior segmented pointer
+Returns:
+if true then V0 = 1, else V0 = 0
+*/
+[CheckObjBehavior]: 0x002A14FC
+
+/*
+CheckObjBehavior2 (0x802A1554 / 0x5C554)
+
+Check to see if an object has a certain behavior.
+
+Arguments:
+A0 = Pointer to object
+A1 = Behavior segmented pointer
+Returns:
+if true then V0 = 1, else V0 = 0
+*/
+[CheckObjBehavior2]: 0x002A1554
+
+/*
 IsMarioGroundPounding (0x802A3754 / 0x5E754)
 
 Detects if Mario is ground-pounding the current object (0x80361160).
 
 Returns:
-V0 = 1 (if true)
-V0 = 0 (if false)
+if true then V0 = 1, else V0 = 0
 */
 [IsMarioGroundPounding]: 0x002A3754
 
@@ -102,6 +152,28 @@ A0 = 0x64, A1 = 0x64, A2 = "Hello World!"
 will print out "Hello World!" on the screen at the position (100,100)
 */
 [PrintXY]: 0x002D66C0
+
+/*
+ExplodeObject (0x802E6AF8 / 0xA1AF8)
+
+Explodes the current object (0x80361160) like a bob-omb and spawns a coin.
+*/
+[ExplodeObject]: 0x002E6AF8
+
+/*
+CreateStar (0x802F2B88 / 0xADB88)
+
+Creates a star that travels to a specific XYZ position.
+
+Arguments:
+F12 = X position (float)
+F14 = Y position (float)
+A2 = Z position (float)
+
+Returns:
+V0 = Pointer to star object
+*/
+[CreateStar]: 0x002F2B88
 
 /*
 cosf (0x80325310 / 0xE0310)
