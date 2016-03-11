@@ -1,0 +1,171 @@
+/***************************************************************************
+This document contains many different function defines from Super Mario 64.
+
+You can import this file into a CajeASM file and call each function using 
+'JAL @functionName'.
+
+You can download the latest version of CajeASM here:
+http://origami64.net/showthread.php?tid=30
+
+Latest update: March 11th, 2016
+Contributors: Davideesk
+****************************************************************************/
+
+/*
+SegmentedToVirtual (0x80277F50 / 0x32F50)
+
+Converts a segment address to a true RAM address.
+
+Arguments:
+A0 = Segment address
+Returns:
+V0 = RAM address
+*/
+[SegmentedToVirtual]: 0x00277F50
+
+/*
+DmaCopy (0x80278504 / 0x33504)
+
+Copies data from ROM to RAM.
+
+Arguments:
+A0 = RAM address to copy to
+A1 = ROM start address
+A2 = ROM end address
+*/
+[DmaCopy]: 0x00278504
+
+/*
+SpawnObj (0x8029EDCC / 0x59DCC)
+
+Spawns an object at another object's position.
+
+Arguments:
+A0 = Object pointer
+A1 = Model ID
+A2 = Behavior segment address
+Returns:
+V0 = pointer to newly spawned object
+*/
+[SpawnObj]: 0x0029EDCC
+
+/*
+IsMarioGroundPounding (0x802A3754 / 0x5E754)
+
+Detects if Mario is ground-pounding the current object (0x80361160).
+
+Returns:
+V0 = 1 (if true)
+V0 = 0 (if false)
+*/
+[IsMarioGroundPounding]: 0x002A3754
+
+/*
+IsMarioStepping (0x802A3CFC / 0x5ECFC)
+
+Detects if Mario is on top of the current object (0x80361160).
+
+Returns:
+if true then V0 = 1, else V0 = 0
+*/
+[IsMarioStepping]: 0x002A3CFC 
+
+/*
+PrintInt (0x802D62D8 / 0x912D8)
+
+Prints a string and a value to the screen. Similar to printf.
+
+Arguments:
+A0 = X position
+A1 = Y position
+A2 = pointer to text
+A3 = value
+
+Example:
+A0 = 0x64, A1 = 0x64, A2 = "Super Mario %d!", A3 = 0x40 
+will print out "Super Mario 64!" on the screen at the position (100,100)
+*/
+[PrintInt]: 0x002D62D8
+
+/*
+PrintXY (0x802D66C0 / 0x916C0)
+
+Prints a string and a value to the screen. Similar to printf.
+
+Arguments:
+A0 = X position
+A1 = Y position
+A2 = pointer to text
+
+Example:
+A0 = 0x64, A1 = 0x64, A2 = "Hello World!" 
+will print out "Hello World!" on the screen at the position (100,100)
+*/
+[PrintXY]: 0x002D66C0
+
+/*
+cosf (0x80325310 / 0xE0310)
+
+Computes the cosine of an angle.
+
+Arguments:
+F12 = Input angle (in radians)
+Returns:
+F0 = resulting value
+*/
+[cosf]: 0x00325310 
+
+/*
+sinf (0x80325480 / 0xE0480)
+
+Computes the sine of an angle.
+
+Arguments:
+F12 = Input angle (in radians)
+Returns:
+F0 = resulting value
+*/
+[sinf]: 0x00325480 
+
+/*
+memcpy (0x803273F0 / 0xE23F0)
+
+Copies bytes in the RAM from one location to another.
+
+Arguments:
+A0 = Pointer to RAM destination to copy to
+A1 = Pointer to RAM source to copy from
+A2 = Number of bytes to copy
+Returns:
+V0 = Pointer to RAM desitination
+*/
+[memcpy]: 0x003273F0
+
+/*
+strlen (0x8032741C / 0xE241C)
+
+Gets the length of an ascii string.
+
+Arguments:
+A0 = pointer to string
+Returns:
+V0 = length of string
+
+Example: 
+If A0 pointed to "Hello World!", then V0 would return 12.
+*/
+[strlen]: 0x0032741C
+
+/*
+strchr (0x80327444 / 0xE2444)
+
+returns a pointer to the first instance of a character in a string.
+
+Arguments:
+A0 = pointer to string
+A1 = ASCII character to be located
+Returns:
+V0 = pointer to the first occurrence
+If no matching character was found, then V0 will return 0
+*/
+[strchr]: 0x00327444 
