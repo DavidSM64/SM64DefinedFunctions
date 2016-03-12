@@ -8,7 +8,7 @@ You can include this file into a CajeASM file and call each function using
 You can download the latest version of CajeASM here:
 http://origami64.net/showthread.php?tid=30
 
-Latest update: March 11th, 2016
+Latest update: March 12th, 2016
 Contributors: Davideesk
 ****************************************************************************/
 
@@ -49,6 +49,29 @@ Returns:
 V0 = pointer to newly spawned object
 */
 [SpawnObj]: 0x0029EDCC
+
+/*
+ScaleXYZ (0x8029F3D0 / 0x5A3D0)
+
+Scales an object.
+
+Arguments:
+A0 = pointer to object
+A1 = Scale X factor (float)
+A2 = Scale Y factor (float)
+A3 = Scale Z factor (float)
+*/
+[ScaleXYZ]: 0x0029F3D0
+
+/*
+ScaleObject (0x8029F430 / 0x5A430)
+
+Scales an object uniformly.
+
+Arguments:
+F12 = Scale factor
+*/
+[ScaleObject]: 0x0029F430
 
 /*
 HideObject (0x8029F620 / 0x5A620)
@@ -119,6 +142,17 @@ Returns:
 if true then V0 = 1, else V0 = 0
 */
 [IsMarioStepping]: 0x002A3CFC 
+
+
+/*
+ShakeScreen (0x802A3CFC / 0x600FC)
+
+Shakes the screen.
+
+Arguments:
+A0 = Intensity? (1 to 4)
+*/
+[ShakeScreen]: 0x002A50FC
 
 /*
 PrintInt (0x802D62D8 / 0x912D8)
