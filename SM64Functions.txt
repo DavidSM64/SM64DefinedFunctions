@@ -8,7 +8,7 @@ You can include this file into a CajeASM file and call each function using
 You can download the latest version of CajeASM here:
 http://origami64.net/showthread.php?tid=30
 
-Latest update: March 12th, 2016
+Latest update: March 14th, 2016
 Contributors: Davideesk
 ****************************************************************************/
 
@@ -66,7 +66,7 @@ A3 = Scale Z factor (float)
 /*
 ScaleObject (0x8029F430 / 0x5A430)
 
-Scales an object uniformly.
+Scales the current object (0x80361160) uniformly.
 
 Arguments:
 F12 = Scale factor
@@ -74,9 +74,19 @@ F12 = Scale factor
 [ScaleObject]: 0x0029F430
 
 /*
+SetObjAnimation (0x8029F464 / 0x5A464)
+
+Sets the current object's (0x80361160) animation.
+
+Arguments:
+A0 = Animation Index
+*/
+[SetObjAnimation]: 0x0029F464
+
+/*
 HideObject (0x8029F620 / 0x5A620)
 
-Hides current object (0x80361160) by ORing 0x01 at offset 0x02.
+Hides the current object (0x80361160) by ORing 0x01 at offset 0x02.
 */
 [HideObject]: 0x0029F620
 
@@ -86,6 +96,16 @@ UnHideObject (0x8029F6BC / 0x5A6BC)
 Unhides the current object (0x80361160) by ORing 0x10 at offset 0x02.
 */
 [UnHideObject]: 0x0029F6BC
+
+/*
+SetModel (0x802A04C0 / 0x5B4C0)
+
+Changes the model of the current object (0x80361160).
+
+Arguments:
+A0 = Model ID
+*/
+[SetModel]: 0x002A04C0
 
 /*
 SetObjBehavior (0x802A14C4 / 0x5C4C4)
@@ -153,6 +173,21 @@ Arguments:
 A0 = Intensity? (1 to 4)
 */
 [ShakeScreen]: 0x002A50FC
+
+
+/*
+PlaySound (0x802CA190 / 0x85190)
+
+Plays a sound based on an argument.
+
+Arguments:
+A0 = Argument?*
+
+*Note: Not sure what kind of argument this is. Needs to be looked into.
+Some examples I've seen in the code:
+A0 = 0x30264081, 0x60050001, 0x6002FF01, 0x600A4001, 0x40080001
+*/
+[PlaySound]: 0x002CA190
 
 /*
 PrintInt (0x802D62D8 / 0x912D8)
