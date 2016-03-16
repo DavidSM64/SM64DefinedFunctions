@@ -209,7 +209,7 @@ will print out "Super Mario 64!" on the screen at the position (100,100)
 /*
 PrintXY (0x802D66C0 / 0x916C0)
 
-Prints a string and a value to the screen. Similar to printf.
+Prints a string to the screen. Similar to printf.
 
 Arguments:
 A0 = X position
@@ -243,6 +243,16 @@ Returns:
 V0 = Pointer to star object
 */
 [CreateStar]: 0x002F2B88
+
+/*
+osViBlack (0x80323340 / 0xDE340)
+
+Allows the screen to be blacked out. 
+
+Arguments:
+A0 = 1 (set blackout) or A0 = 0 (cancel blackout)
+*/
+[osViBlack]: 0x00323340
 
 /*
 cosf (0x80325310 / 0xE0310)
