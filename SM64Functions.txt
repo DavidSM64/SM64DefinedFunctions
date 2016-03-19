@@ -8,7 +8,7 @@ You can include this file into a CajeASM file and call each function using
 You can download the latest version of CajeASM here:
 http://origami64.net/showthread.php?tid=30
 
-Latest update: March 14th, 2016
+Latest update: March 18th, 2016
 Contributors: Davideesk
 ****************************************************************************/
 
@@ -35,6 +35,24 @@ A1 = ROM start address
 A2 = ROM end address
 */
 [DmaCopy]: 0x00278504
+
+/*
+RotateTorwardsMario (0x8029E530 / 0x59530)
+
+Calculates the rotation torward Mario.
+
+Arguments:
+A0 = Y-rotation (usually obj->0xC8)
+A1 = obj->0x160
+A2 = speed value
+Returns:
+V0 = New Y-rotation value
+
+Important note:
+Object flag 0x2000 needs to be set for this function to work.
+In your behavior script: [ 11 01 20 01 ]
+*/
+[RotateTorwardsMario]: 0x0029E530
 
 /*
 SpawnObj (0x8029EDCC / 0x59DCC)
