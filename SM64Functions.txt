@@ -8,7 +8,7 @@ You can include this file into a CajeASM file and call each function using
 You can download the latest version of CajeASM here:
 http://origami64.net/showthread.php?tid=30
 
-Latest update: March 18th, 2016
+Latest update: March 25th, 2016
 Contributors: Davideesk
 ****************************************************************************/
 
@@ -35,6 +35,23 @@ A1 = ROM start address
 A2 = ROM end address
 */
 [DmaCopy]: 0x00278504
+
+
+/*
+saveFile (0x80279840 / 0x034840)
+
+Saves the current file to the EEPROM. This function will cause a 
+tiny bit of lag when it is called.
+
+Arguments:
+A0 = File Number (File A = 0, File B = 1, File C = 2, File D = 3)
+
+Important Note:
+You must set 0x8033B4A6 to 1 (or any number except 0) for this 
+function to work.
+*/
+[saveFile]: 0x00279840
+
 
 /*
 RotateTorwardsMario (0x8029E530 / 0x59530)
@@ -203,7 +220,9 @@ A0 = Argument?*
 
 *Note: Not sure what kind of argument this is. Needs to be looked into.
 Some examples I've seen in the code:
-A0 = 0x30264081, 0x60050001, 0x6002FF01, 0x600A4001, 0x40080001
+0x70188081 = Death (Bowser laugh)
+0x701EFF81 = Star grab sound
+0x30264081 = Clam opening sound (JRB)
 */
 [PlaySound]: 0x002CA190
 
@@ -273,6 +292,32 @@ A0 = 1 (set blackout) or A0 = 0 (cancel blackout)
 [osViBlack]: 0x00323340
 
 /*
+osEepromLongRead (0x80324690 / 0x0DF690)
+
+Reads n bytes from EEPROM.
+
+Arguments:
+A0 = 0x8033AF78
+A1 = Offset in EEPROM divided by 8 to read from
+A2 = Offset in RAM to write to
+A3 = Number of bytes to read
+*/
+[osEepromLongRead]: 0x00324690
+
+/*
+osEepromLongWrite (0x803247D0 / 0x0DF7D0)
+
+Writes n bytes to EEPROM.
+
+Arguments:
+A0 = 0x8033AF78
+A1 = Offset in EEPROM divided by 8 to write to
+A2 = Offset in RAM to read from
+A3 = Number of bytes to write
+*/
+[osEepromLongWrite]: 0x003247D0
+
+/*
 cosf (0x80325310 / 0xE0310)
 
 Computes the cosine of an angle.
@@ -338,3 +383,31 @@ V0 = pointer to the first occurrence
 If no matching character was found, then V0 will return 0
 */
 [strchr]: 0x00327444 
+
+/*
+osEepromWrite (0x80328AF0 / 0x0E3AF0)
+
+Writes 8 bytes to EEPROM.
+
+Arguments:
+A0 = 0x8033AF78
+A1 = Offset in EEPROM divided by 8 to write to
+A2 = Offset in RAM to read from
+*/
+[osEepromWrite]: 0x00328AF0
+
+/*
+osEepromRead (0x80329150 / 0x0E4150)
+
+Reads 8 bytes from EEPROM.
+
+Arguments:
+A0 = 0x8033AF78
+A1 = Offset in EEPROM divided by 8 to write to
+A2 = Offset in RAM to read from
+*/
+[osEepromRead]: 0x00329150
+
+
+
+
