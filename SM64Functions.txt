@@ -36,9 +36,26 @@ A2 = ROM end address
 */
 [DmaCopy]: 0x00278504
 
+/*
+calSaveChecksum (0x8027939C / 0x03439C)
+
+Calculates a checksum; Used in saveFileData and saveMenuData.
+
+Arguments:
+A0 = start RAM address
+A1 = number of bytes
+A2 = upper 16 bits of checksum
+
+Returns:
+V0 = calculated lower 16 bits of the checksum
+
+Important Note: 
+The bytes at (A0 + A1 - 4) will be overwritten with the checksum.
+*/
+[calSaveChecksum]: 0x0027939C
 
 /*
-saveFile (0x80279840 / 0x034840)
+saveFileData (0x80279840 / 0x034840)
 
 Saves the current file to the EEPROM. This function will cause a 
 tiny bit of lag when it is called.
@@ -48,10 +65,20 @@ A0 = File Number (File A = 0, File B = 1, File C = 2, File D = 3)
 
 Important Note:
 You must set 0x8033B4A6 to 1 (or any number except 0) for this 
+function to work. This function will always call @saveMenuData
+*/
+[saveFileData]: 0x00279840
+
+/*
+saveMenuData (0x802794A0 / 0x0344A0)
+
+Saves the extra data for the file menu to the EEPROM.
+
+Important Note:
+You must set 0x8033B4A5 to 1 (or any number except 0) for this 
 function to work.
 */
-[saveFile]: 0x00279840
-
+[saveMenuData]: 0x002794A0
 
 /*
 RotateTorwardsMario (0x8029E530 / 0x59530)
