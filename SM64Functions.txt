@@ -225,9 +225,8 @@ if true then V0 = 1, else V0 = 0
 */
 [IsMarioStepping]: 0x002A3CFC 
 
-
 /*
-ShakeScreen (0x802A3CFC / 0x600FC)
+ShakeScreen (0x802A50FC / 0x600FC)
 
 Shakes the screen.
 
@@ -235,7 +234,6 @@ Arguments:
 A0 = Intensity? (1 to 4)
 */
 [ShakeScreen]: 0x002A50FC
-
 
 /*
 PlaySound (0x802CA190 / 0x85190)
@@ -296,7 +294,8 @@ Explodes the current object (0x80361160) like a bob-omb and spawns a coin.
 /*
 CreateStar (0x802F2B88 / 0xADB88)
 
-Creates a star that travels to a specific XYZ position.
+Creates a star that travels to a specific XYZ position from the position 
+of the current object (0x80361160).
 
 Arguments:
 F12 = X position (float)
@@ -305,6 +304,10 @@ A2 = Z position (float)
 
 Returns:
 V0 = Pointer to star object
+
+Note:
+The star# is determined by offset 0x188 (Behavior param 2) from the
+current object that the star spawned from.
 */
 [CreateStar]: 0x002F2B88
 
