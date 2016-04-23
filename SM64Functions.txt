@@ -8,9 +8,25 @@ You can include this file into a CajeASM file and call each function using
 You can download the latest version of CajeASM here:
 http://origami64.net/showthread.php?tid=30
 
-Latest update: March 25th, 2016
+Latest update: April 23rd, 2016
 Contributors: Davideesk
 ****************************************************************************/
+
+/*
+ConfigureTimer (0x802495E0 / 0x45E0)
+
+Enables, disables, starts, or stops the HUD timer
+
+Arguments:
+A0 = option
+- 0 = Shows timer and resets time value to zero
+- 1 = Starts timer
+- 2 = Stops timer
+- 3 = Stops showing timer and resets time value to zero
+Returns:
+V0 = time value (value / 30 = time in seconds)
+*/
+[ConfigureTimer]: 0x002495E0
 
 /*
 SegmentedToVirtual (0x80277F50 / 0x32F50)
@@ -79,6 +95,30 @@ You must set 0x8033B4A5 to 1 (or any number except 0) for this
 function to work.
 */
 [saveMenuData]: 0x002794A0
+
+/*
+PlayTransition (0x8027B1A0 / 0x0361A0)
+
+Plays a transition on the screen.
+
+Arguments:
+A0 = Fade image
+- 0x01 = No image (fade to color)
+- 0x09 = Star image
+- 0x0B = Circle image
+- 0x11 = Mario face image
+- 0x13 = Bowser image
+A1 = amount of time for transition to complete
+A2 = red color amount (0x00 to 0xFF)
+A3 = green color amount (0x00 to 0xFF)
+SP + 0x10 = blue color amount (0x00 to 0xFF)
+
+Note:
+After the transition has been played, the screen will be filled up
+with whatever color you chose. To fix this, detect if the byte at
+0x8033BAB3 is equal to 1. If it is 1, then set that value to zero.
+*/
+[PlayTransition]: 0x0027B1A0
 
 /*
 RotateTorwardsMario (0x8029E530 / 0x59530)
