@@ -8,7 +8,7 @@ You can include this file into a CajeASM file and call each function using
 You can download the latest version of CajeASM here:
 http://origami64.net/showthread.php?tid=30
 
-Latest update: April 23rd, 2016
+Latest update: May 6th, 2016
 Contributors: Davideesk
 ****************************************************************************/
 
@@ -26,7 +26,7 @@ A0 = option
 Returns:
 V0 = time value (value / 30 = time in seconds)
 */
-[ConfigureTimer]: 0x002495E0
+[ConfigureTimer]: 0x802495E0
 
 /*
 SegmentedToVirtual (0x80277F50 / 0x32F50)
@@ -38,7 +38,7 @@ A0 = Segment address
 Returns:
 V0 = RAM address
 */
-[SegmentedToVirtual]: 0x00277F50
+[SegmentedToVirtual]: 0x80277F50
 
 /*
 DmaCopy (0x80278504 / 0x33504)
@@ -50,7 +50,7 @@ A0 = RAM address to copy to
 A1 = ROM start address
 A2 = ROM end address
 */
-[DmaCopy]: 0x00278504
+[DmaCopy]: 0x80278504
 
 /*
 calSaveChecksum (0x8027939C / 0x03439C)
@@ -68,7 +68,7 @@ V0 = calculated lower 16 bits of the checksum
 Important Note: 
 The bytes at (A0 + A1 - 4) will be overwritten with the checksum.
 */
-[calSaveChecksum]: 0x0027939C
+[calSaveChecksum]: 0x8027939C
 
 /*
 saveFileData (0x80279840 / 0x034840)
@@ -83,7 +83,7 @@ Important Note:
 You must set 0x8033B4A6 to 1 (or any number except 0) for this 
 function to work. This function will always call @saveMenuData
 */
-[saveFileData]: 0x00279840
+[saveFileData]: 0x80279840
 
 /*
 saveMenuData (0x802794A0 / 0x0344A0)
@@ -94,7 +94,7 @@ Important Note:
 You must set 0x8033B4A5 to 1 (or any number except 0) for this 
 function to work.
 */
-[saveMenuData]: 0x002794A0
+[saveMenuData]: 0x802794A0
 
 /*
 PlayTransition (0x8027B1A0 / 0x0361A0)
@@ -118,7 +118,7 @@ After the transition has been played, the screen will be filled up
 with whatever color you chose. To fix this, detect if the byte at
 0x8033BAB3 is equal to 1. If it is 1, then set that value to zero.
 */
-[PlayTransition]: 0x0027B1A0
+[PlayTransition]: 0x8027B1A0
 
 /*
 RotateTorwardsMario (0x8029E530 / 0x59530)
@@ -136,7 +136,7 @@ Important note:
 Object flag 0x2000 needs to be set for this function to work.
 In your behavior script: [ 11 01 20 01 ]
 */
-[RotateTorwardsMario]: 0x0029E530
+[RotateTorwardsMario]: 0x8029E530
 
 /*
 SpawnObj (0x8029EDCC / 0x59DCC)
@@ -150,7 +150,7 @@ A2 = Behavior segment address
 Returns:
 V0 = pointer to newly spawned object
 */
-[SpawnObj]: 0x0029EDCC
+[SpawnObj]: 0x8029EDCC
 
 /*
 ScaleXYZ (0x8029F3D0 / 0x5A3D0)
@@ -163,7 +163,7 @@ A1 = Scale X factor (float)
 A2 = Scale Y factor (float)
 A3 = Scale Z factor (float)
 */
-[ScaleXYZ]: 0x0029F3D0
+[ScaleXYZ]: 0x8029F3D0
 
 /*
 ScaleObject (0x8029F430 / 0x5A430)
@@ -173,7 +173,7 @@ Scales the current object (0x80361160) uniformly.
 Arguments:
 F12 = Scale factor
 */
-[ScaleObject]: 0x0029F430
+[ScaleObject]: 0x8029F430
 
 /*
 SetObjAnimation (0x8029F464 / 0x5A464)
@@ -183,21 +183,21 @@ Sets the current object's (0x80361160) animation.
 Arguments:
 A0 = Animation Index
 */
-[SetObjAnimation]: 0x0029F464
+[SetObjAnimation]: 0x8029F464
 
 /*
 HideObject (0x8029F620 / 0x5A620)
 
 Hides the current object (0x80361160) by ORing 0x01 at offset 0x02.
 */
-[HideObject]: 0x0029F620
+[HideObject]: 0x8029F620
 
 /*
 UnHideObject (0x8029F6BC / 0x5A6BC)
 
 Unhides the current object (0x80361160) by ORing 0x10 at offset 0x02.
 */
-[UnHideObject]: 0x0029F6BC
+[UnHideObject]: 0x8029F6BC
 
 /*
 SetModel (0x802A04C0 / 0x5B4C0)
@@ -207,7 +207,7 @@ Changes the model of the current object (0x80361160).
 Arguments:
 A0 = Model ID
 */
-[SetModel]: 0x002A04C0
+[SetModel]: 0x802A04C0
 
 /*
 SetObjBehavior (0x802A14C4 / 0x5C4C4)
@@ -218,7 +218,7 @@ Arguments:
 A0 = Pointer to object
 A1 = Behavior segmented pointer
 */
-[SetObjBehavior]: 0x002A14C4
+[SetObjBehavior]: 0x802A14C4
 
 /*
 CheckObjBehavior (0x802A14FC / 0x5C4FC)
@@ -230,7 +230,7 @@ A0 = Behavior segmented pointer
 Returns:
 if true then V0 = 1, else V0 = 0
 */
-[CheckObjBehavior]: 0x002A14FC
+[CheckObjBehavior]: 0x802A14FC
 
 /*
 CheckObjBehavior2 (0x802A1554 / 0x5C554)
@@ -243,7 +243,7 @@ A1 = Behavior segmented pointer
 Returns:
 if true then V0 = 1, else V0 = 0
 */
-[CheckObjBehavior2]: 0x002A1554
+[CheckObjBehavior2]: 0x802A1554
 
 /*
 IsMarioGroundPounding (0x802A3754 / 0x5E754)
@@ -253,7 +253,7 @@ Detects if Mario is ground-pounding the current object (0x80361160).
 Returns:
 if true then V0 = 1, else V0 = 0
 */
-[IsMarioGroundPounding]: 0x002A3754
+[IsMarioGroundPounding]: 0x802A3754
 
 /*
 IsMarioStepping (0x802A3CFC / 0x5ECFC)
@@ -263,7 +263,7 @@ Detects if Mario is on top of the current object (0x80361160).
 Returns:
 if true then V0 = 1, else V0 = 0
 */
-[IsMarioStepping]: 0x002A3CFC 
+[IsMarioStepping]: 0x802A3CFC 
 
 /*
 ShakeScreen (0x802A50FC / 0x600FC)
@@ -273,7 +273,21 @@ Shakes the screen.
 Arguments:
 A0 = Intensity? (1 to 4)
 */
-[ShakeScreen]: 0x002A50FC
+[ShakeScreen]: 0x802A50FC
+
+/*
+CreateBreakParticles (0x802AE0CC / 0x690CC)
+
+Creates an explosion effect that come out from the center of the current object.
+
+Arguments:
+A0 = Number of objects
+A1 = Model ID (0x8A = triangles, 0x8B = cartoon stars)
+A2 = Size of objects (float)
+A3 = some extra parameter used to color the triangles with models 0x8A & 0x8B
+
+*/
+[CreateBreakParticles]: 0x802AE0CC
 
 /*
 PlaySound (0x802CA190 / 0x85190)
@@ -289,7 +303,7 @@ Some examples I've seen in the code:
 0x701EFF81 = Star grab sound
 0x30264081 = Clam opening sound (JRB)
 */
-[PlaySound]: 0x002CA190
+[PlaySound]: 0x802CA190
 
 /*
 PrintInt (0x802D62D8 / 0x912D8)
@@ -306,7 +320,7 @@ Example:
 A0 = 0x64, A1 = 0x64, A2 = "Super Mario %d!", A3 = 0x40 
 will print out "Super Mario 64!" on the screen at the position (100,100)
 */
-[PrintInt]: 0x002D62D8
+[PrintInt]: 0x802D62D8
 
 /*
 PrintXY (0x802D66C0 / 0x916C0)
@@ -322,14 +336,14 @@ Example:
 A0 = 0x64, A1 = 0x64, A2 = "Hello World!" 
 will print out "Hello World!" on the screen at the position (100,100)
 */
-[PrintXY]: 0x002D66C0
+[PrintXY]: 0x802D66C0
 
 /*
 ExplodeObject (0x802E6AF8 / 0xA1AF8)
 
 Explodes the current object (0x80361160) like a bob-omb and spawns a coin.
 */
-[ExplodeObject]: 0x002E6AF8
+[ExplodeObject]: 0x802E6AF8
 
 /*
 CreateStar (0x802F2B88 / 0xADB88)
@@ -349,7 +363,44 @@ Note:
 The star# is determined by offset 0x188 (Behavior param 2) from the
 current object that the star spawned from.
 */
-[CreateStar]: 0x002F2B88
+[CreateStar]: 0x802F2B88
+
+/*
+RandomRange (0x802FA964 / 0xB5964)
+
+Generates a random number within a range.
+
+s16 proc_802FA964(s16 A0, s16 A1) {
+	return (s16)(RandomFloat() * (float)A1) + A0;
+}
+
+Arguments:
+A0 = Start offset value
+A1 = Multiplier with value from 0.0 to 1.0
+
+Returns:
+V0 = resulting random value.
+*/
+[RandomRange]: 0x802FA964
+
+/*
+RandomRange2 (0x802FA9D8 / 0xB59D8)
+
+Generates a random number within a range.
+
+s16 proc_802FA9D8(s16 A0, s16 A1, s16 A2) {
+	return (RandomU16() % A2) * A1 + A0;
+}
+
+Arguments:
+A0 = Start offset value
+A1 = Multiplier
+A2 = Highest value from RNG function (Modulus)
+
+Returns:
+V0 = resulting random value.
+*/
+[RandomRange2]: 0x802FA9D8
 
 /*
 osViBlack (0x80323340 / 0xDE340)
@@ -359,7 +410,7 @@ Allows the screen to be blacked out.
 Arguments:
 A0 = 1 (set blackout) or A0 = 0 (cancel blackout)
 */
-[osViBlack]: 0x00323340
+[osViBlack]: 0x80323340
 
 /*
 osEepromLongRead (0x80324690 / 0x0DF690)
@@ -372,7 +423,7 @@ A1 = Offset in EEPROM divided by 8 to read from
 A2 = Offset in RAM to write to
 A3 = Number of bytes to read
 */
-[osEepromLongRead]: 0x00324690
+[osEepromLongRead]: 0x80324690
 
 /*
 osEepromLongWrite (0x803247D0 / 0x0DF7D0)
@@ -385,7 +436,7 @@ A1 = Offset in EEPROM divided by 8 to write to
 A2 = Offset in RAM to read from
 A3 = Number of bytes to write
 */
-[osEepromLongWrite]: 0x003247D0
+[osEepromLongWrite]: 0x803247D0
 
 /*
 cosf (0x80325310 / 0xE0310)
@@ -397,7 +448,7 @@ F12 = Input angle (in radians)
 Returns:
 F0 = resulting value
 */
-[cosf]: 0x00325310 
+[cosf]: 0x80325310 
 
 /*
 sinf (0x80325480 / 0xE0480)
@@ -409,7 +460,7 @@ F12 = Input angle (in radians)
 Returns:
 F0 = resulting value
 */
-[sinf]: 0x00325480 
+[sinf]: 0x80325480 
 
 /*
 memcpy (0x803273F0 / 0xE23F0)
@@ -423,7 +474,7 @@ A2 = Number of bytes to copy
 Returns:
 V0 = Pointer to RAM desitination
 */
-[memcpy]: 0x003273F0
+[memcpy]: 0x803273F0
 
 /*
 strlen (0x8032741C / 0xE241C)
@@ -438,7 +489,7 @@ V0 = length of string
 Example: 
 If A0 pointed to "Hello World!", then V0 would return 12.
 */
-[strlen]: 0x0032741C
+[strlen]: 0x8032741C
 
 /*
 strchr (0x80327444 / 0xE2444)
@@ -452,7 +503,7 @@ Returns:
 V0 = pointer to the first occurrence
 If no matching character was found, then V0 will return 0
 */
-[strchr]: 0x00327444 
+[strchr]: 0x80327444 
 
 /*
 osEepromWrite (0x80328AF0 / 0x0E3AF0)
@@ -464,7 +515,7 @@ A0 = 0x8033AF78
 A1 = Offset in EEPROM divided by 8 to write to
 A2 = Offset in RAM to read from
 */
-[osEepromWrite]: 0x00328AF0
+[osEepromWrite]: 0x80328AF0
 
 /*
 osEepromRead (0x80329150 / 0x0E4150)
@@ -476,7 +527,40 @@ A0 = 0x8033AF78
 A1 = Offset in EEPROM divided by 8 to write to
 A2 = Offset in RAM to read from
 */
-[osEepromRead]: 0x00329150
+[osEepromRead]: 0x80329150
+
+/*
+RandomU16 (0x80383BB0 / 0x100930)
+
+Generates a random integer value
+
+Returns:
+V0 = u16 value from 0x0000 to 0xFFFF
+*/
+[RandomU16]: 0x80383BB0
+
+/*
+RandomFloat (0x80383CB4 / 0x100A34)
+
+Generates a random float value
+
+Returns:
+F0 = float value from 0.0 to 1.0
+*/
+[RandomFloat]: 0x80383CB4
+
+/*
+RandomSign (0x80383D1C / 0x100A9C)
+
+Generates either 1 or -1, useful for random directions.
+
+Returns:
+V0 = either 1 or -1 (50/50 chance for either one)
+*/
+[RandomSign]: 0x80383CB4
+
+
+
 
 
 
